@@ -58,6 +58,10 @@ jobs:
       - run:
           name: Terraform Apply
           command: terraform -chdir="./Terraform" apply -var-file="values.tfvars" --auto-approve
+      - run:
+          command: |
+                cd Ansible
+                ls
     working_directory: ~src
 
 workflows:
