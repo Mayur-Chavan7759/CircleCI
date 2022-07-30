@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   terraform: 'circleci/terraform@1.2.1'
-  ansible: 'trustedshops-public/ansible@2.0.0'
+  ansible: 'orbss/ansible-ssh@0.7.4'
 
 jobs:
   Git_Clone:
@@ -58,18 +58,11 @@ jobs:
       - run:
           name: Terraform Apply
           command: terraform -chdir="./Terraform" apply -var-file="values.tfvars" --auto-approve
-      - run:
-          command: |
-                cd Ansible
-                ls
-                cat inventory.txt
     working_directory: ~src
 
   Ansible:
-    executor: ansible/default
+    executor: default
     steps:
-      - run:
-          command: ansible-playbook "./Ansible/playbook.yml" -i "./Ansible/inventory.txt"
 
 workflows:
   circleci_terraform_ansible_integration: 
