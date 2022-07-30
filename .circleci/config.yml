@@ -62,9 +62,7 @@ jobs:
           command: |
                 cd Ansible
                 ls
-                cd ..
-                cd Terraform
-                ls
+                cat inventory.txt
     working_directory: ~src
 
 workflows:
