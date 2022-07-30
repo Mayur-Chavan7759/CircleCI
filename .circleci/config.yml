@@ -31,17 +31,15 @@ jobs:
       - attach_workspace:
           at: .
       
-      - run:
-          name: terraform init
-          command: terraform -chdir="./Terraform" init
+      - terraform/init:
+          path: "./Terraform"
 
-      - run:
-          name: terrraform validate
-          command: terraform -chdir="./Terraform" validate
+      - terraform/validate:
+          path: "./Terraform"
+          context: terraform
           
       - run:
           name: terraform plan
-          context: terraform
           command: terraform -chdir="./Terraform" plan -var-file="values.tfvars"
 
 workflows:
