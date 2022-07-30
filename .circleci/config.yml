@@ -44,11 +44,19 @@ jobs:
           name: terraform plan
           command: terraform -chdir="./Terraform" plan -var-file="values.tfvars"
 
+      - persist_to_workspace:
+          root: .
+          paths: .
+
     working_directory: ~src
 
   Terraform_Setup_Apply:
     executor: terraform/default
     steps:
+      
+      - attach_workspace:
+          at: .
+
       - run:
           name: Terraform Apply
           command: terraform -chdir="./Terraform" apply -var-file="values.tfvars" --auto-approve
