@@ -50,6 +50,5 @@ workflows:
     jobs:
       - Git_Clone
       - Terraform_Setup:
-          context: terraform
           requires:
             - Git_Clone
