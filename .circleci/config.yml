@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   terraform: 'circleci/terraform@1.2.1'
-  ansible: 'orbss/ansible@0.2.3'
+  ansible: 'trustedshops-public/ansible@2.0.0'
 
 jobs:
   Git_Clone:
@@ -65,6 +65,12 @@ jobs:
                 cat inventory.txt
     working_directory: ~src
 
+  Ansible:
+    executor: ansible/default
+    steps:
+      - run:
+          command: ansible-playbook "./Ansible/playbook.yml" -i "./Ansible/inventory.txt"
+
 workflows:
   circleci_terraform_ansible_integration: 
     jobs:
@@ -81,3 +87,6 @@ workflows:
           context: terraform
           requires:
             - Hold
+      - Ansible:
+          requires:
+            - Terraform_Setup_Apply
