@@ -34,11 +34,11 @@ jobs:
       - run:
           name: terraform init
           command: terraform -chdir="./Terraform" init
-          context: terraform
 
       - run:
           name: terrraform validate
           command: terraform -chdir="./Terraform" validate
+          context: terraform
           
       - run:
           name: terraform plan
