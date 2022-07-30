@@ -10,7 +10,7 @@ jobs:
       - run:
           command: >-
                 GIT_SSH_COMMAND='ssh -vv -i ~/.ssh/id_rsa'
-                git clone https://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@github.com:Mayur-Chavan7759/Terraform.git
+                git clone https://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@github.com/Mayur-Chavan7759/Terraform.git
           name: GIT Clone Terraform repository
 
       - run:
