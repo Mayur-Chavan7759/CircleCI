@@ -62,6 +62,8 @@ jobs:
           command: |
                 cd Ansible
                 ls
+                cd Terraform
+                ls
     working_directory: ~src
 
 workflows:
