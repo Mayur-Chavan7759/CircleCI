@@ -16,7 +16,7 @@ jobs:
       - run:
           command: >-
                 GIT_SSH_COMMAND='ssh -vv -i ~/.ssh/id_rsa'
-                git clone https://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@github.com:Mayur-Chavan7759/Ansible.git
+                git clone https://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@github.com/Mayur-Chavan7759/Ansible.git
           name: GIT Clone Ansible repository
 
       - run:
