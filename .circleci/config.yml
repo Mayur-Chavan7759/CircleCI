@@ -44,3 +44,6 @@ workflows:
   circleci_terraform_ansible_integration: 
     jobs:
       - Git_Clone
+      - Terraform_Setup:
+          requires:
+            - Git_Clone
