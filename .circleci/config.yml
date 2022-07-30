@@ -46,6 +46,13 @@ jobs:
 
     working_directory: ~src
 
+  Terraform_Setup_Apply:
+    executor: terraform/default
+    steps:
+      - run:
+          name: Terraform Apply
+          command: terraform -chdir="./Terraform" apply -var-file="values.tfvars" --auto-approve
+
 workflows:
   circleci_terraform_ansible_integration: 
     jobs:
@@ -54,3 +61,10 @@ workflows:
           context: terraform
           requires:
             - Git_Clone
+      - Hold:
+          type: approval
+          requires:
+            - Terraform_Setup
+      - Terraform_Setup_Apply:
+          requires:
+            - Hold
