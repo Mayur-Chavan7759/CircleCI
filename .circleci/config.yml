@@ -35,8 +35,9 @@ jobs:
           name: terraform init
           command: terraform -chdir="./Terraform" init
 
-      - terraform/validate:
-          path: "./Terraform"
+      - run:
+          name:  terraform validate
+          command: terraform -chdir="./Terraform" validate
           
       - run:
           name: terraform plan
@@ -47,8 +48,8 @@ jobs:
 workflows:
   circleci_terraform_ansible_integration: 
     jobs:
-      - Git_Clone:
-          context: terraform
+      - Git_Clone
       - Terraform_Setup:
+          context: terraform
           requires:
             - Git_Clone
