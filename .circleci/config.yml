@@ -58,15 +58,23 @@ jobs:
       - run:
           name: Terraform Apply
           command: terraform -chdir="./Terraform" apply -var-file="values.tfvars" --auto-approve
+      - persist_to_workspace:
+          root: .
+          paths: .
+
     working_directory: ~src
 
   Ansible:
     machine: true
     steps:
+      - attach_workspace:
+          at: .
       - run:
           command: |
             cd ./Ansible
             ansible-playbook playbook.yml -i inventory.txt
+
+    working_directory: ~src
 
 workflows:
   circleci_terraform_ansible_integration: 
