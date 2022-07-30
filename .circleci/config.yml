@@ -31,8 +31,9 @@ jobs:
       - attach_workspace:
           at: .
       
-      - terraform/init:
-          path: "./Terraform"
+      - run:
+          name: terraform init
+          command: terraform -chdir="./Terraform" init
 
       - terraform/validate:
           path: "./Terraform"
