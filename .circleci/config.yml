@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   terraform: 'circleci/terraform@1.2.1'
-  ansible: 'orbss/ansible-ssh@0.7.4'
+  ansible-ssh: 'orbss/ansible-ssh@0.7.4'
 
 jobs:
   Git_Clone:
@@ -61,8 +61,12 @@ jobs:
     working_directory: ~src
 
   Ansible:
-    executor: default
+    machine: true
     steps:
+      - run:
+          command: |
+            cd Ansible
+            ansible-playbook playbook.yml -i inventory.txt
 
 workflows:
   circleci_terraform_ansible_integration: 
