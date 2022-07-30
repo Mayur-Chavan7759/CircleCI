@@ -39,6 +39,10 @@ jobs:
       - run:
           name: terrraform validate
           command: terraform -chdir="./Terraform" validate
+          
+      - run:
+          name: terraform plan
+          command: terraform -chdir="./Terraform" -plan -var-file="value.tfvars"
 
 workflows:
   circleci_terraform_ansible_integration: 
