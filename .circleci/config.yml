@@ -22,11 +22,24 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-          
+
     working_directory: ~src
 
   Terraform_Setup:
-          
+    executor: terraform/default
+    steps:
+      - attach_workspace:
+          at: .
+      
+      - run:
+          name: terraform init
+          command: terraform -chdir="./Terraform" init
+          context: terraform
+
+      - run:
+          name: terrraform validate
+          command: terraform -chdir="./Terraform" validate
+
 workflows:
   circleci_terraform_ansible_integration: 
     jobs:
