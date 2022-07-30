@@ -38,10 +38,10 @@ jobs:
       - run:
           name: terrraform validate
           command: terraform -chdir="./Terraform" validate
-          context: terraform
           
       - run:
           name: terraform plan
+          context: terraform
           command: terraform -chdir="./Terraform" plan -var-file="values.tfvars"
 
 workflows:
