@@ -4,7 +4,7 @@ orbs:
   terraform: 'circleci/terraform@2.1'
 
 jobs:
-  my_first_job:
+  Git_Clone:
     executor: terraform/default
     steps:
       - run:
@@ -18,12 +18,8 @@ jobs:
                 GIT_SSH_COMMAND='ssh -vv -i ~/.ssh/id_rsa'
                 git clone https://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@github.com/Mayur-Chavan7759/Ansible.git
           name: GIT Clone Ansible repository
-
-      - run:
-          command: |
-              cd Ansible
-              ls
+          
 workflows:
   circleci_terraform_ansible_integration: 
     jobs:
-      - my_first_job
+      - Git_Clone
