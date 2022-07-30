@@ -37,7 +37,6 @@ jobs:
 
       - terraform/validate:
           path: "./Terraform"
-          contexts: terraform
           
       - run:
           name: terraform plan
