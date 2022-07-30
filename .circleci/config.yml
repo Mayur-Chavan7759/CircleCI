@@ -65,7 +65,7 @@ jobs:
     steps:
       - run:
           command: |
-            cd Ansible
+            cd ./Ansible
             ansible-playbook playbook.yml -i inventory.txt
 
 workflows:
