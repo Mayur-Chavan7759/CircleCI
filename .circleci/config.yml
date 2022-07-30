@@ -42,7 +42,9 @@ jobs:
           
       - run:
           name: terraform plan
-          command: terraform -chdir="./Terraform" plan -var-file="value.tfvars"
+          command: |
+                cd Terraform
+                ls
 
 workflows:
   circleci_terraform_ansible_integration: 
